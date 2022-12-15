@@ -1,25 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Loader from './components/loader/Loader';
+const MovieItems = React.lazy(() => import('./components/movieitems/MovieItems'));
+const Nav = React.lazy(() => import('./components/nav/Nav'));
+const Hero = React.lazy(()=> import('./components/hero/Hero'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <React.Suspense fallback={<Loader />}>
+    <Nav />
+    <Hero />
+    <MovieItems action='Popular: Action Movies' fantasy='Fantasy: Series' />
+   </React.Suspense>
   );
 }
 
