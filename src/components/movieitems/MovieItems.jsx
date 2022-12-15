@@ -6,6 +6,10 @@ const MovieItems = function(props) {
     const [movies, setMovies] = useState({
         movieLists: []
     })
+    
+    const [search, setSearch] = useState('')
+    
+    const [loading, setLoading] = useState(true)
 
     const [actions, setAction] = useState({
         action: []
@@ -17,9 +21,7 @@ const MovieItems = function(props) {
         error: ''
     })
 
-    const [search, setSearch] = useState('')
 
-    const [loading, setLoading] = useState(true)
 
     const fetchApi = async () => {
         try {
@@ -41,7 +43,7 @@ const MovieItems = function(props) {
 
     useEffect(() => {
         fetchApi()
-    })
+    });
 
     //GET ACTION MOVIES - SEAL TEAM
 
@@ -63,13 +65,13 @@ const MovieItems = function(props) {
 
     useEffect(()=> {
         getMovies()
-    })
+    },[])
 
     //GET FANTASY MOVIES
 
     const getSuperman = async () => {
         try{
-            const api = await fetch('http://www.omdbapi.com/?s=Game of Thrones&Season=1&apikey=9e27162&')
+            const api = await fetch('http://www.omdbapi.com/?s=Game of Thrones&apikey=9e27162&')
             if(!api.ok) throw Error('...error');
             const result = await api.json();
             setFantasy(result.Search)
@@ -94,7 +96,7 @@ const MovieItems = function(props) {
                 </div>               
             </main>
             <section>
-                <div className='img'>
+            <div className='img'>
                 {
                     movies.movieLists.map((movie) => {
                         return(
@@ -112,11 +114,12 @@ const MovieItems = function(props) {
                     })
                 }
                 </div>
-
-                {/* FANTASY INSTALLMENTS */}
+            </section>
+            <section>               
+                {/* SERIES SECTION and FANTASY CATEGORY */}
 
                 <h1 className='action-title'>{props.fantasy}</h1>
-                <div className='img'>
+                <div className='img zindex'>
                 {loading &&   <div className="lds-roller">
                                 <div></div>
                                 <div></div>
@@ -136,13 +139,14 @@ const MovieItems = function(props) {
                                 <div className='overlay'>
                                     <h1>{movie.Title}</h1>
                                 </div>
+                                <div className='wishlist'>
+                                    <h1>Add to WishList</h1>
+                                </div>
                             </div>
                         )
                     })
                 }
                 </div>
-
-                {/* SERIES SECTION */}
 
                 <h1 className='action-title'>{props.action}</h1>
                 <div className='img'>
