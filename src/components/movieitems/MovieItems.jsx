@@ -43,7 +43,7 @@ const MovieItems = function(props) {
 
     useEffect(() => {
         fetchApi()
-    },[search]);
+    }, [search]);
 
     //GET ACTION MOVIES - SEAL TEAM
 
@@ -65,7 +65,7 @@ const MovieItems = function(props) {
 
     useEffect(()=> {
         getMovies()
-    },[])
+    }, [])
 
     //GET FANTASY MOVIES
 
@@ -83,7 +83,7 @@ const MovieItems = function(props) {
 
     useEffect(()=> {
         fantasyApi()
-    })
+    }, [])
 
     return(
         <>
