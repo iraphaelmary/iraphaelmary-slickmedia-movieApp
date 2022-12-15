@@ -43,7 +43,7 @@ const MovieItems = function(props) {
 
     useEffect(() => {
         fetchApi()
-    });
+    },[search]);
 
     //GET ACTION MOVIES - SEAL TEAM
 
