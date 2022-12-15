@@ -69,7 +69,7 @@ const MovieItems = function(props) {
 
     //GET FANTASY MOVIES
 
-    const getSuperman = async () => {
+    const fantasyApi = async () => {
         try{
             const api = await fetch('http://www.omdbapi.com/?s=Game of Thrones&apikey=9e27162&')
             if(!api.ok) throw Error('...error');
@@ -82,7 +82,7 @@ const MovieItems = function(props) {
     }
 
     useEffect(()=> {
-        getSuperman()
+        fantasyApi()
     })
 
     return(
