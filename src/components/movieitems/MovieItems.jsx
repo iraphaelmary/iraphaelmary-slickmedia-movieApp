@@ -25,8 +25,7 @@ const MovieItems = function(props) {
         try {
             const api = await fetch(`https://www.omdbapi.com/?s=${search}&apikey=9e27162`)
             if(!api.ok) throw Error('...error');
-            const response = await api.json();
-            
+            const response = await api.json();           
             if(response.Search){
                 setMovies(()=>({
                     movieLists: response.Search

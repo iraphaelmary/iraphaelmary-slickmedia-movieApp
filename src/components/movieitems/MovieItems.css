@@ -1,7 +1,7 @@
 main {
   width: 100%;
   height: 100%;
-  padding: 3rem 0;
+  padding: 3rem 0 1rem 0;
 }
 main .wrapper {
   width: 100%;
@@ -96,6 +96,12 @@ section .img::-webkit-scrollbar {
   section {
     width: 100%;
     height: 100%;
+  }
+  section .action-title {
+    margin-left: 15px;
+  }
+  section .img {
+    margin-left: 15px;
   }
   section .img .img-row img {
     width: 200px;
